@@ -9,5 +9,8 @@
   },
   "devDependencies": {
     "markdown-it-task-checkbox": "^1.0.6"
+  },
+  "engine": {
+    "node": "22.16.0"
   }
 }
