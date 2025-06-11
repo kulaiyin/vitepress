@@ -34,6 +34,51 @@ export default defineConfig({
           }
         ]
       },
+      // 开发环境
+      '/frameworks': {
+        base: "",
+        items: [
+          {
+            text: 'react框架',
+            link: "/frameworks/react/index.md",
+            items: [
+              { text: 'react18', link: "/frameworks/react/react18.md" },
+              { text: 'nextjs框架', link: "/frameworks/react/nextjs.md" }
+            ]
+          },
+          {
+            text: 'vue框架',
+            link: "/frameworks/vue/index.md",
+            items: [
+              { text: 'vue2', link: "/frameworks/vue/vue2.md" },
+              { text: 'vue3', link: "/frameworks/vue/vue3.md" },
+              { text: '全局状态', link: "/frameworks/vue/store.md" }
+            ]
+          }
+        ]
+      },
+      // 数据库
+      '/database': {
+        base: "",
+        items: [
+          {
+            text: 'mysql数据库',
+            link: "/database/mysql.md",
+          },
+          {
+            text: 'mongodb数据库',
+            link: "/database/mongodb.md",
+          },
+          {
+            text: 'sqlite数据库',
+            link: "/database/sqlite.md",
+          },
+          {
+            text: 'redis数据库',
+            link: "/database/redis.md",
+          },
+        ]
+      },
       // 日报
       "/dev-week-record": {
         base: "",
