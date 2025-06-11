@@ -1,3 +1,5 @@
+git checkout -- .
+git pull
 yarn
 yarn docs:build
 cp vitepress.conf /etc/nginx/conf.d
