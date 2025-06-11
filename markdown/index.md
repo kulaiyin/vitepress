@@ -22,6 +22,9 @@ hero:
     - theme: brand
       text: 待办清单
       link: /todo-list
+    - theme: alt
+      text: 移动端app
+      link: /mobile-app
 
 # features:
 #   - title: Feature A

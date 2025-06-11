@@ -54,6 +54,14 @@ export default defineConfig({
               { text: 'vue3', link: "/frameworks/vue/vue3.md" },
               { text: '全局状态', link: "/frameworks/vue/store.md" }
             ]
+          },
+          {
+            text: 'Kuikly框架',
+            link: "/frameworks/kuikly/index.md",
+          },
+          {
+            text: 'Flutter框架',
+            link: "/frameworks/flutter/index.md",
           }
         ]
       },
@@ -76,6 +84,24 @@ export default defineConfig({
           {
             text: 'redis数据库',
             link: "/database/redis.md",
+          },
+        ]
+      },
+      // 数据库
+      '/mobile-app': {
+        base: "",
+        items: [
+          {
+            text: '安卓移动开发',
+            link: "/mobile-app/android/index.md",
+          },
+          {
+            text: 'Ios移动开发',
+            link: "/mobile-app/ios/index.md",
+          },
+          {
+            text: '鸿蒙移动开发',
+            link: "/mobile-app/harmonynext/index.md",
           },
         ]
       },
