@@ -10,6 +10,9 @@ hero:
     - theme: brand
       text: 开发周报
       link: /dev-week-record
+    - theme: brand
+      text: 开发环境安装
+      link: /env-install
     - theme: alt
       text: 待办清单
       link: /todo-list

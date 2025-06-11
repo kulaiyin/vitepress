@@ -12,8 +12,31 @@ export default defineConfig({
     ],
 
     sidebar: {
+      // 开发环境
+      '/env': {
+        base: "",
+        items: [
+          {
+            text: 'linux 环境配置',
+            link: "/env/linux.md"
+          },
+          {
+            text: 'macos 环境配置',
+            link: "/env/macos.md"
+          },
+          {
+            text: 'windows 环境配置',
+            link: "/env/windows.md"
+          },
+          {
+            text: 'vscode 环境配置',
+            link: "/env/vscode.md"
+          }
+        ]
+      },
+      // 日报
       "/dev-week-record": {
-        base:"",
+        base: "",
         items: [
           {
             text: '2025-06',
