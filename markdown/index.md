@@ -16,6 +16,9 @@ hero:
     - theme: brand
       text: 开发框架
       link: /frameworks
+    - theme: brand
+      text: 开发规范
+      link: /dev-specification
     - theme: alt
       text: 数据库
       link: /database

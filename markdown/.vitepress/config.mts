@@ -47,6 +47,10 @@ export default defineConfig({
             ]
           },
           {
+            text: 'nextjs框架',
+            link: "/frameworks/nextjs/index.md",
+          },
+          {
             text: 'vue框架',
             link: "/frameworks/vue/index.md",
             items: [
@@ -54,6 +58,10 @@ export default defineConfig({
               { text: 'vue3', link: "/frameworks/vue/vue3.md" },
               { text: '全局状态', link: "/frameworks/vue/store.md" }
             ]
+          },
+          {
+            text: 'express框架',
+            link: "/frameworks/express/index.md",
           },
           {
             text: 'Kuikly框架',
@@ -117,6 +125,15 @@ export default defineConfig({
               { text: '16-22(26周)', link: '/years/2025/06/26-week.md' },
               { text: '23-29(27周)', link: '/years/2025/06/26-week.md' }
             ]
+          }
+        ]
+      },
+      "/dev-specification": {
+        base: "",
+        items: [
+          {
+            text: 'git提交规范',
+            link: '/dev-specification/git/index.md'
           }
         ]
       }
