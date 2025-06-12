@@ -133,7 +133,10 @@ export default defineConfig({
         items: [
           {
             text: 'git提交规范',
-            link: '/dev-specification/git/index.md'
+            link: '/dev-specification/git/index.md',
+            items: [
+              { text: 'cz-git', link: '/dev-specification/git/cz-git.md' },
+            ]
           }
         ]
       }
