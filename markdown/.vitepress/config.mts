@@ -137,6 +137,14 @@ export default defineConfig({
             items: [
               { text: 'cz-git', link: '/dev-specification/git/cz-git.md' },
             ]
+          },
+          {
+            text: '代码格式化规范',
+            link: '/dev-specification/code/index.md',
+            items: [
+              { text: 'prettier', link: '/dev-specification/code/prettier.md' },
+              { text: 'eslint', link: '/dev-specification/code/eslint.md' },
+            ]
           }
         ]
       }
