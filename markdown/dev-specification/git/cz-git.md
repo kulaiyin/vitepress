@@ -42,48 +42,48 @@ git czg -h
   },
   "types": [
     {
-      "value": "[feat](新特性)",
+      "value": "[feat]",
       "name": "[feat](新特性):     新增功能"
     },
     {
-      "value": "[fix](修复) ",
+      "value": "[fix]",
       "name": "[fix](修复) :     修复缺陷"
     },
     {
-      "value": "[文档](docs)",
-      "name": "[文档](docs):     文档变更"
+      "value": "[docs]",
+      "name": "[docs](文档):     文档变更"
     },
     {
-      "value": "[格式](style)",
-      "name": "[格式](style):     代码格式（不影响功能，例如空格、分号等格式修正）"
+      "value": "[style]",
+      "name": "[style](格式):     代码格式（不影响功能，例如空格、分号等格式修正）"
     },
     {
-      "value": "[重构](refactor)",
-      "name": "[重构](refactor):     代码重构（不包括 bug 修复、功能新增）"
+      "value": "[refactor]",
+      "name": "[refactor](重构):     代码重构（不包括 bug 修复、功能新增）"
     },
     {
-      "value": "[性能](perf)",
-      "name": "[性能](perf):     性能优化"
+      "value": "[perf]",
+      "name": "[perf](性能):     性能优化"
     },
     {
-      "value": "[测试](test)",
-      "name": "[测试](test):     添加疏漏测试或已有测试改动"
+      "value": "[test]",
+      "name": "[test](测试):     添加疏漏测试或已有测试改动"
     },
     {
-      "value": "[构建](build)",
-      "name": "[构建](build):     构建流程、外部依赖变更（如升级 npm 包、修改 webpack 配置等）"
+      "value": "[build]",
+      "name": "[build](构建):     构建流程、外部依赖变更（如升级 npm 包、修改 webpack 配置等）"
     },
     {
-      "value": "[集成](ci)",
-      "name": "[集成](ci):     修改 CI 配置、脚本"
+      "value": "[ci]",
+      "name": "[ci](集成):     修改 CI 配置、脚本"
     },
     {
-      "value": "[回退](revert)",
-      "name": "[回退](revert):     回滚 commit"
+      "value": "[revert]",
+      "name": "[revert](回退):     回滚 commit"
     },
     {
-      "value": "[其他](chore)",
-      "name": "[其他](chore):     对构建过程或辅助工具和库的更改（不影响源文件、测试用例）"
+      "value": "[chore]",
+      "name": "[chore](其他):     对构建过程或辅助工具和库的更改（不影响源文件、测试用例）"
     }
   ],
   "useEmoji": false,
@@ -124,5 +124,4 @@ git czg -h
   "defaultScope": "",
   "defaultSubject": ""
 }
-
 ```
