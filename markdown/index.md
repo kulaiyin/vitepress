@@ -28,6 +28,10 @@ hero:
     - theme: alt
       text: 移动端app
       link: /mobile-app
+    - theme: brand
+      text: 网络
+      link: /network
+
 
 # features:
 #   - title: Feature A
