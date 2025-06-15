@@ -4,6 +4,9 @@ import markdownItTaskCheckbox from "markdown-it-task-checkbox"
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "开发日记博客",
+  lang: "zh-CN",
+  // 显示最后更新时间
+  lastUpdated: true,
   description:
     "记录开发过程中环境配置,遇到的问题和解决方案,TodoList,Week Record等.",
   themeConfig: {
