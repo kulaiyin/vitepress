@@ -37,5 +37,14 @@ done
   "editor.autoClosingBrackets": "beforeWhitespace",
   // 启用括号配对彩色高亮
   "editor.bracketPairColorization.enabled": true,
+  // foam插件配置选项
+  // 配置日记文件保存路径
+  "foam.openDailyNote.directory": "markdown/years",
+  // 配置日记文件命名格式, 支持文件嵌套
+  "foam.openDailyNote.filenameFormat": "yyyy/yyyy-mm/mm-dd",
+  // 配置日记文件打开方式
+  "foam.openDailyNote.onStartup": true,
+  // 配置日记文件标题格式
+  "foam.openDailyNote.titleFormat": "yyyy-mm-dd"
 }
 ```

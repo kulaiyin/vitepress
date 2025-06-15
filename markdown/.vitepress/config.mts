@@ -113,7 +113,7 @@ export default defineConfig({
         ],
       },
       // 日报
-      "/dev-week-record": {
+      "/years": {
         base: "",
         items: [
           {
@@ -123,6 +123,7 @@ export default defineConfig({
               { text: "16-22(25周)", link: "/years/2025/06/25-week.md" },
               { text: "16-22(26周)", link: "/years/2025/06/26-week.md" },
               { text: "23-29(27周)", link: "/years/2025/06/26-week.md" },
+              { text: "06-15", link: "/years/2025/2025-06/06-15.md" },
             ],
           },
         ],

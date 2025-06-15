@@ -9,7 +9,7 @@ hero:
   actions:
     - theme: brand
       text: 开发周报
-      link: /dev-week-record
+      link: /years
     - theme: alt
       text: 开发环境安装
       link: /env-install
