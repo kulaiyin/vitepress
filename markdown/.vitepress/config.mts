@@ -49,8 +49,13 @@ export default defineConfig({
             ],
           },
           {
-            text: "nextjs框架",
-            link: "/frameworks/nextjs/index.md",
+            text: "nest框架",
+            link: "/frameworks/nest/index.md",
+            items: [
+              { text: "nest-cli", link: "/frameworks/nest/nest-cli.md" },
+              { text: "redis", link: "/frameworks/nest/redis.md" },
+              { text: "websocket", link: "/frameworks/nest/websocket.md" },
+            ],
           },
           {
             text: "vue框架",

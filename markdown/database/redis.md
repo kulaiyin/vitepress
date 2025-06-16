@@ -4,6 +4,8 @@
 
 [Redis 安装](https://www.redis.net.cn/tutorial/3503.html)
 
+[在nest中使用redis](../frameworks/nest/redis.md)
+
 ### linux 下安装 redis
 ```sh
 sudo apt-get update
@@ -36,3 +38,4 @@ CONFIG set requirepass "redis_server"
 
 AUTH redis_server
 ```
+

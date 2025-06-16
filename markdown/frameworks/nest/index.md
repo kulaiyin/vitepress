@@ -7,10 +7,3 @@
 ```sh
 npm install -g @nestjs/cli
 ```
-
-### cli
-
-```sh
-# 生成user服务
-nest g service user
-```
