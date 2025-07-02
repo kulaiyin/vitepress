@@ -16,12 +16,34 @@ repositories {
 ```kotlin
 pluginManagement {
     repositories {
-//        maven { setUrl("https://maven.aliyun.com/repository/central") }
-//        maven { setUrl("https://maven.aliyun.com/repository/jcenter") }
-//        maven { setUrl("https://maven.aliyun.com/repository/google") }
-//        maven { setUrl("https://maven.aliyun.com/repository/gradle-plugin") }
-//        maven { setUrl("https://maven.aliyun.com/repository/public") }
-//        maven { setUrl("https://jitpack.io") }
+        maven { url = uri("https://maven.aliyun.com/repository/gradle-plugin") }  // 阿里云插件镜像
+        maven { url = uri("https://mirrors.cloud.tencent.com/gradle-plugin") }    // 腾讯云插件镜像
+        maven { url = uri("https://maven.aliyun.com/repository/central") }
+        maven { url = uri("https://maven.aliyun.com/repository/jcenter") }
+        maven { url = uri("https://maven.aliyun.com/repository/google") }
+        maven { url = uri("https://maven.aliyun.com/repository/gradle-plugin") }
+        maven { url = uri("https://maven.aliyun.com/repository/public") }
+        maven { url = uri("https://jitpack.io") }
+        google()
+        gradlePluginPortal()
+        mavenCentral()
+        mavenLocal()
+    }
+}
+
+dependencyResolutionManagement {
+    repositories {
+        maven { url = uri("https://maven.aliyun.com/repository/gradle-plugin") }  // 阿里云插件镜像
+        maven { url = uri("https://mirrors.cloud.tencent.com/gradle-plugin") }    // 腾讯云插件镜像
+        maven { url = uri("https://maven.aliyun.com/repository/central") }
+        maven { url = uri("https://maven.aliyun.com/repository/jcenter") }
+        maven { url = uri("https://maven.aliyun.com/repository/google") }
+        maven { url = uri("https://maven.aliyun.com/repository/gradle-plugin") }
+        maven { url = uri("https://maven.aliyun.com/repository/public") }
+        maven { url = uri("https://jitpack.io") }
+        google()
+        mavenCentral()
+        mavenLocal()
     }
 }
 ```
