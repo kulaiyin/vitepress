@@ -25,7 +25,7 @@ stages:
           - ""
           - npm i -g pnpm
           - "# 执行编译命令"
-          - pnpm install && npm run build
+          - pnpm install && npm run docs:build
           - ""
           - "# 复制nginx配置"
           - cp vitepress.conf markdown/.vitepress/dist
