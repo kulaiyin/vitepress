@@ -58,7 +58,6 @@ stages:
             target: ~/gitee_go/deploy
             artifactRepository: default
             artifactName: BUILD_ARTIFACT
-            artifactVersion: latest
         script:
           - "# 功能：部署脚本会在部署主机组的每台机器上执行"
           - echo '开始部署Vitepress站点...'
