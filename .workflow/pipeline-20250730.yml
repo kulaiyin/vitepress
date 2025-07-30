@@ -56,7 +56,7 @@ stages:
         deployArtifact:
           - source: artifact
             name: output
-            target: ~/gitee_go/deploy/vitepress
+            target: ~/gitee_go/deploy
             artifactRepository: default
             artifactName: output
             artifactVersion: latest
@@ -71,7 +71,7 @@ stages:
           - echo 'Hello Gitee Go!'
           - rm -rf /var/www/html/vitepress
           - mkdir -p /var/www/html/vitepress
-          - tar zxvf ~/gitee_go/deploy/vitepress/output.tar.gz -C /var/www/html/vitepress
+          - tar zxvf ~/gitee_go/deploy/output.tar.gz -C /var/www/html/vitepress
           - cp /var/www/html/vitepress/dist /etc/nginx/conf.d/
           - systemctl reload nginx.service
         notify: []
