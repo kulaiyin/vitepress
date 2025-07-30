@@ -6,7 +6,7 @@ triggers:
   push:
     branches:
       prefix:
-        - ''
+        - master
 stages:
   - name: stage-849acf5f
     displayName: 编译
@@ -40,21 +40,6 @@ stages:
         notify: []
         strategy:
           retry: '0'
-  - name: stage-9d6dbbdd
-    displayName: 未命名
-    strategy: naturally
-    trigger: auto
-    executor: []
-    steps:
-      - step: publish@release_artifacts
-        name: publish_release_artifacts
-        displayName: 发布
-        dependArtifact: output
-        version: 1.0.0.0
-        autoIncrement: true
-        notify: []
-        strategy:
-          retry: '0'
   - name: stage-6ba823f3
     displayName: 部署
     strategy: naturally
@@ -69,10 +54,12 @@ stages:
           hostID:
             - 20c2b0ba-42e9-41d2-ac91-90bc4686d0d0
         deployArtifact:
-          - source: build
+          - source: artifact
             name: output
             target: ~/gitee_go/deploy/vitepress
-            dependArtifact: output
+            artifactRepository: default
+            artifactName: output
+            artifactVersion: latest
         script:
           - '# 功能：部署脚本会在部署主机组的每台机器上执行'
           - '# 使用场景：先将制品包解压缩到指定目录中，再执行启动脚本deploy.sh，脚本示例地址：https://gitee.com/gitee-go/spring-boot-maven-deploy-case/blob/master/deploy.sh'
