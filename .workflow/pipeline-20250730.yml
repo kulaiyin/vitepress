@@ -32,7 +32,7 @@ stages:
         artifacts:
           - name: BUILD_ARTIFACT
             path:
-              - ./dist
+              - ./markdown/.vitepress/dist
         caches:
           - ~/.npm
           - ~/.yarn
