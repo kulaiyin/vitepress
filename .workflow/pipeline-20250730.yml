@@ -1,4 +1,4 @@
-version: "1.0"
+version: '1.0'
 name: pipeline-20250730
 displayName: pipeline-20250730
 triggers:
@@ -6,7 +6,7 @@ triggers:
   push:
     branches:
       prefix:
-        - ""
+        - ''
 stages:
   - name: stage-849acf5f
     displayName: 编译
@@ -20,14 +20,14 @@ stages:
         displayName: Nodejs 构建
         nodeVersion: 20.10.0
         commands:
-          - "# 设置NPM源，提升安装速度"
+          - '# 设置NPM源，提升安装速度'
           - npm config set registry https://registry.npmmirror.com
-          - ""
+          - ''
           - npm i -g pnpm
-          - "# 执行编译命令"
+          - '# 执行编译命令'
           - pnpm install && npm run docs:build
-          - ""
-          - "# 复制nginx配置"
+          - ''
+          - '# 复制nginx配置'
           - cp vitepress.conf markdown/.vitepress/dist
         artifacts:
           - name: BUILD_ARTIFACT
@@ -39,7 +39,22 @@ stages:
           - ./.pnpm
         notify: []
         strategy:
-          retry: "0"
+          retry: '0'
+  - name: stage-9d6dbbdd
+    displayName: 未命名
+    strategy: naturally
+    trigger: auto
+    executor: []
+    steps:
+      - step: publish@release_artifacts
+        name: publish_release_artifacts
+        displayName: 发布
+        dependArtifact: output
+        version: 1.0.0.0
+        autoIncrement: true
+        notify: []
+        strategy:
+          retry: '0'
   - name: stage-6ba823f3
     displayName: 部署
     strategy: naturally
@@ -54,26 +69,24 @@ stages:
           hostID:
             - 20c2b0ba-42e9-41d2-ac91-90bc4686d0d0
         deployArtifact:
-          - source: artifact
+          - source: build
             name: output
-            target: ~/gitee_go/deploy
-            artifactRepository: default
-            artifactName: output
-            artifactVersion: latest
+            target: ~/gitee_go/deploy/vitepress
+            dependArtifact: output
         script:
-          - "# 功能：部署脚本会在部署主机组的每台机器上执行"
-          - "# 使用场景：先将制品包解压缩到指定目录中，再执行启动脚本deploy.sh，脚本示例地址：https://gitee.com/gitee-go/spring-boot-maven-deploy-case/blob/master/deploy.sh"
-          - "# mkdir -p /home/admin/app"
-          - "# tar zxvf ~/gitee_go/deploy/output.tar.gz -C /home/admin/app"
-          - "# sh /home/admin/app/deploy.sh restart"
-          - "# 如果你是php之类的无需制品包的制品方式，可以使用 git clone 或者 git pull 将源代码更新到服务器，再执行其他命令"
-          - "# git clone ***@***.git"
+          - '# 功能：部署脚本会在部署主机组的每台机器上执行'
+          - '# 使用场景：先将制品包解压缩到指定目录中，再执行启动脚本deploy.sh，脚本示例地址：https://gitee.com/gitee-go/spring-boot-maven-deploy-case/blob/master/deploy.sh'
+          - '# mkdir -p /home/admin/app'
+          - '# tar zxvf ~/gitee_go/deploy/output.tar.gz -C /home/admin/app'
+          - '# sh /home/admin/app/deploy.sh restart'
+          - '# 如果你是php之类的无需制品包的制品方式，可以使用 git clone 或者 git pull 将源代码更新到服务器，再执行其他命令'
+          - '# git clone ***@***.git'
           - echo 'Hello Gitee Go!'
           - rm -rf /var/www/html/vitepress
           - mkdir -p /var/www/html/vitepress
-          - tar zxvf ~/gitee_go/deploy/output.tar.gz -C /var/www/html/vitepress
+          - tar zxvf ~/gitee_go/deploy/vitepress/output.tar.gz -C /var/www/html/vitepress
           - cp /var/www/html/vitepress/dist /etc/nginx/conf.d/
           - systemctl reload nginx.service
         notify: []
         strategy:
-          retry: "0"
+          retry: '0'
