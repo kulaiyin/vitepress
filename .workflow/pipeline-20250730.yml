@@ -28,7 +28,7 @@ stages:
           - pnpm install && npm run build
           - ""
           - "# 复制nginx配置"
-          - cp ./vitepress.conf ./markdown/.vitepress/dist
+          - cp vitepress.conf markdown/.vitepress/dist
         artifacts:
           - name: BUILD_ARTIFACT
             path:
