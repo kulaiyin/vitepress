@@ -1,5 +1,5 @@
-import { defineConfig } from "vitepress"
-import markdownItTaskCheckbox from "markdown-it-task-checkbox"
+import { defineConfig } from "vitepress";
+import markdownItTaskCheckbox from "markdown-it-task-checkbox";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -77,6 +77,10 @@ export default defineConfig({
           {
             text: "Flutter框架",
             link: "/frameworks/flutter/index.md",
+          },
+          {
+            text: "qiankun框架",
+            link: "/frameworks/qiankun/index.md",
           },
         ],
       },
@@ -185,7 +189,7 @@ export default defineConfig({
   },
   markdown: {
     config(md) {
-      md.use(markdownItTaskCheckbox)
+      md.use(markdownItTaskCheckbox);
     },
   },
-})
+});
