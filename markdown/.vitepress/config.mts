@@ -159,6 +159,16 @@ export default defineConfig({
               { text: "eslint", link: "/dev-specification/code/eslint.md" },
             ],
           },
+          {
+            text: "docker镜像",
+            link: "/dev-specification/docker/index.md",
+            items: [
+              {
+                text: "docker-ui",
+                link: "/dev-specification/docker/docker-ui.md",
+              },
+            ],
+          },
         ],
       },
       // 网络
