@@ -3,6 +3,7 @@
 ## docker命令
 
 > windows下重启docker服务
+
 ```shell
 # 重启docker
 net stop "Docker Desktop Service"
@@ -15,6 +16,7 @@ docker info
 ## 国内镜像
 
 > 路径: ``
+
 ```json
 {
   "builder": {
@@ -31,5 +33,30 @@ docker info
     "https://registry.cn-hangzhou.aliyuncs.com",
     "https://mirror.ccs.tencentyun.com"
   ]
+}
+```
+
+```json
+{
+  "dns": ["8.8.8.8", "8.8.4.4"],
+  "registry-mirrors": [
+    "https://docker.m.daocloud.io/",
+    "https://huecker.io/",
+    "https://dockerhub.timeweb.cloud",
+    "https://noohub.ru/",
+    "https://dockerproxy.com",
+    "https://docker.mirrors.ustc.edu.cn",
+    "https://docker.nju.edu.cn",
+    "https://xx4bwyg2.mirror.aliyuncs.com",
+    "http://f1361db2.m.daocloud.io",
+    "https://registry.docker-cn.com",
+    "http://hub-mirror.c.163.com"
+  ],
+  "runtimes": {
+    "nvidia": {
+      "path": "nvidia-container-runtime",
+      "runtimeArgs": []
+    }
+  }
 }
 ```
