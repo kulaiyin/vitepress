@@ -104,6 +104,10 @@ export default defineConfig({
             text: "redis数据库",
             link: "/database/redis.md",
           },
+          {
+            text: "es数据库",
+            link: "/database/elasticsearch.md",
+          },
         ],
       },
       // 数据库
