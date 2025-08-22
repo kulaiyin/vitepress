@@ -10,6 +10,7 @@ export default defineConfig({
   lastUpdated: true,
   description:
     "记录开发过程中环境配置,遇到的问题和解决方案,TodoList,Week Record等.",
+
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
@@ -215,6 +216,8 @@ export default defineConfig({
     ],
   },
   markdown: {
+    // 开启代码块行号显示
+    lineNumbers: true,
     config(md) {
       md.use(markdownItTaskCheckbox);
     },
