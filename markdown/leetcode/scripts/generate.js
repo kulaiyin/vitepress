@@ -3553,9 +3553,9 @@ for (let index = 0; index < questions.length; index++) {
 ## 实现
 
 ### typescript 实现
-\`\`\`typescript
 
-\`\`\`
+<<< @/leetcode/test/${index + 1}.${question.translatedTitle}.ts
+
 `
     const id = index + 1;
     const fileTitle = `${id}.${question.translatedTitle}`
@@ -3573,7 +3573,7 @@ for (let index = 0; index < questions.length; index++) {
         fs.writeFileSync(target, template)
     }
     // 生成test执行文件
-    if (true || !fs.existsSync(testTarget)) {
+    if (!fs.existsSync(testTarget)) {
         fs.writeFileSync(testTarget, `// # ${question.translatedTitle}
 
 import { describe, it, expect } from "vitest";
