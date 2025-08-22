@@ -1,5 +1,6 @@
 import { defineConfig } from "vitepress";
 import markdownItTaskCheckbox from "markdown-it-task-checkbox";
+import { isDevMode, loadDirMdFiles } from "./tools";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -11,7 +12,14 @@ export default defineConfig({
     "记录开发过程中环境配置,遇到的问题和解决方案,TodoList,Week Record等.",
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
-    nav: [{ text: "Home", link: "http://47.116.182.231:3061" }],
+    nav: [
+      {
+        text: "Home",
+        link: isDevMode
+          ? "http://localhost:5173/"
+          : "http://47.116.182.231:3061",
+      },
+    ],
 
     sidebar: {
       // 开发环境
@@ -194,6 +202,11 @@ export default defineConfig({
             ],
           },
         ],
+      },
+      // leetcode算法
+      "/leetcode": {
+        base: "",
+        items: loadDirMdFiles("leetcode/questions", { sortById: true }),
       },
     },
 
