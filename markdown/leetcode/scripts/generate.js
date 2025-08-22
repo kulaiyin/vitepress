@@ -3567,9 +3567,14 @@ for (let index = 0; index < questions.length; index++) {
     // 获取当前文件所在的目录路径
     const dirPath = path.dirname(filePath);
     const target = path.join(dirPath, `../questions/${fileTitle}.md`)
+    const testTarget = path.join(dirPath, `../test/${fileTitle}.ts`)
     // console.log(target)
     if (!fs.existsSync(target)) {
         fs.writeFileSync(target, template)
+    }
+    // 生成test执行文件
+    if (true || !fs.existsSync(testTarget)) {
+        fs.writeFileSync(testTarget, `// # ${question.translatedTitle}`)
     }
 }
 
@@ -3579,5 +3584,5 @@ for (const index in questions) {
     let title = `${Number(index) + 1}.${question.translatedTitle}`
     title = title.replaceAll(" ", "")
     const template = `- [ ] [${title}](./questions/${title}.md)`
-    console.log(template)
+    // console.log(template)
 }
