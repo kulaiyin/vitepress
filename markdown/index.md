@@ -31,6 +31,9 @@ hero:
     - theme: brand
       text: 网络
       link: /network
+    - theme: alt
+      text: leetcode算法
+      link: /leetcode/index.md
 
 
 # features:
