@@ -3,9 +3,12 @@
 import { describe, it, expect } from "vitest";
 
 // 时间复杂度O(n^2)，空间复杂度O(1)
+// 时间复杂度：n是数组中的元素个数。最坏情况下，需要遍历所有可能的数对组合。
+// 空间复杂度：O(1)，因为只使用了常数个额外空间。
 function twoSum(nums: number[], target: number): number[] {
-  for (let i = 0; i < nums.length; i++) {
-    for (let j = i + 1; j < nums.length; j++) {
+  const len = nums.length;
+  for (let i = 0; i < len; i++) {
+    for (let j = i + 1; j < len; j++) {
       if (nums[i] + nums[j] === target) {
         return [i, j];
       }
@@ -15,9 +18,12 @@ function twoSum(nums: number[], target: number): number[] {
 }
 
 // 时间复杂度O(n)，空间复杂度O(n)
+// 时间复杂度：n是数组中的元素个数。只需要遍历一次数组，对于每个元素查找哈希表的时间都是O(1)。
+// 空间复杂度：哈希表最多存储n个元素，因此空间复杂度是O(n)。
 function twoSum1(nums: number[], target: number): number[] {
   const map = new Map();
-  for (let i = 0; i < nums.length; i++) {
+  const len = nums.length;
+  for (let i = 0; i < len; i++) {
     const complement = target - nums[i];
     if (map.has(complement)) {
       return [map.get(complement)!, i];
