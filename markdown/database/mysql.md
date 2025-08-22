@@ -40,11 +40,22 @@ dpkg -l | grep mysql
 [MySQL创建用户与授权](https://www.cnblogs.com/sos-blue/p/6852945.html)
 
 ```bash
+# 代表用户名，%代表任意主机都可以连接。localhost代表只能本地访问
+CREATE USER 'kulaiyin'@'localhost' IDENTIFIED BY '123456';
 CREATE USER 'kulaiyin'@'%' IDENTIFIED BY '123456';
 # if You are not allowed to create a user with GRANT
 GRANT ALL ON test_db.* TO 'kulaiyin'@'%';
 # 设置密码
 SET PASSWORD FOR 'kulaiyin'@'%' = '123456';
+```
+
+> 创建表，并分配给用户权限
+
+```bash
+# 使用root角色进行创建数据库和用户，并分配权限
+CREATE DATABASE test_db;
+# 分配权限
+GRANT ALL PRIVILEGES ON shop.* TO 'kulaiyin'@'%';
 ```
 
 ### 连接mysql

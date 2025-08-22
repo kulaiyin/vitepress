@@ -38,6 +38,13 @@ docker info
 
 ```json
 {
+  "builder": {
+    "gc": {
+      "defaultKeepStorage": "20GB",
+      "enabled": true
+    }
+  },
+  "experimental": false,
   "dns": ["8.8.8.8", "8.8.4.4"],
   "registry-mirrors": [
     "https://docker.m.daocloud.io/",
@@ -51,12 +58,6 @@ docker info
     "http://f1361db2.m.daocloud.io",
     "https://registry.docker-cn.com",
     "http://hub-mirror.c.163.com"
-  ],
-  "runtimes": {
-    "nvidia": {
-      "path": "nvidia-container-runtime",
-      "runtimeArgs": []
-    }
-  }
+  ]
 }
 ```
