@@ -1,6 +1,7 @@
 import { defineConfig } from "vitepress";
 import markdownItTaskCheckbox from "markdown-it-task-checkbox";
 import { isDevMode, loadDirMdFiles } from "./tools";
+import { MermaidPlugin, MermaidMarkdown } from "vitepress-plugin-mermaid";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -220,6 +221,16 @@ export default defineConfig({
     lineNumbers: true,
     config(md) {
       md.use(markdownItTaskCheckbox);
+      // 引入mermaid插件支持流程图等图表绘制
+      md.use(MermaidMarkdown);
     },
+  },
+  vite: {
+    // 引入mermaid插件支持流程图等图表绘制
+    plugins: [MermaidPlugin()],
+    optimizeDeps: {
+      include: ["mermaid"],
+    },
+    ssr: { noExternal: ["mermaid"] },
   },
 });

@@ -12,6 +12,8 @@
   },
   "devDependencies": {
     "markdown-it-task-checkbox": "^1.0.6",
+    "mermaid": "^11.10.1",
+    "vitepress-plugin-mermaid": "^2.0.17",
     "vitest": "^3.2.4"
   },
   "engine": {
