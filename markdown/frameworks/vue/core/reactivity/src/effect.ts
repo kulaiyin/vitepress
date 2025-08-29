@@ -84,6 +84,7 @@ export interface Subscriber extends DebuggerOptions {
 
 const pausedQueueEffects = new WeakSet<ReactiveEffect>()
 
+// #region ReactiveEffect
 export class ReactiveEffect<T = any>
   implements Subscriber, ReactiveEffectOptions
 {
@@ -112,7 +113,9 @@ export class ReactiveEffect<T = any>
   onStop?: () => void
   onTrack?: (event: DebuggerEvent) => void
   onTrigger?: (event: DebuggerEvent) => void
-
+  // fn: 在构造函数中传入，用于执行副作用函数
+  // 1. 更新UI是传入的函数: componentUpdateFn组件更新方法
+  // 2. 更新对象数据
   constructor(public fn: () => T) {
     if (activeEffectScope && activeEffectScope.active) {
       activeEffectScope.effects.push(this)
@@ -147,7 +150,7 @@ export class ReactiveEffect<T = any>
       batch(this)
     }
   }
-
+  // 执行副作用函数，并返回结果
   run(): T {
     // TODO cleanupEffect
 
@@ -215,7 +218,7 @@ export class ReactiveEffect<T = any>
     return isDirty(this)
   }
 }
-
+// #endregion ReactiveEffect
 /**
  * For debugging
  */
@@ -255,6 +258,7 @@ export function startBatch(): void {
   batchDepth++
 }
 
+// #region endBatch
 /**
  * Run batched effects when all batches have ended
  * @internal
@@ -286,6 +290,7 @@ export function endBatch(): void {
       if (e.flags & EffectFlags.ACTIVE) {
         try {
           // ACTIVE flag is effect-only
+          // 触发数据更新或UI更新。
           ;(e as ReactiveEffect).trigger()
         } catch (err) {
           if (!error) error = err
@@ -297,6 +302,7 @@ export function endBatch(): void {
 
   if (error) throw error
 }
+// #endregion endBatch
 
 function prepareDeps(sub: Subscriber) {
   // Prepare deps for tracking, starting from the head

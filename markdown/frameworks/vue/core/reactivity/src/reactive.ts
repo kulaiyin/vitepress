@@ -72,7 +72,7 @@ export interface ReactiveMarker {
 
 export type Reactive<T> = UnwrapNestedRefs<T> &
   (T extends readonly any[] ? ReactiveMarker : {})
-
+// #region reactive
 /**
  * Returns a reactive proxy of the object.
  *
@@ -95,14 +95,20 @@ export function reactive(target: object) {
     return target
   }
   return createReactiveObject(
+    // 原始数据对象，可能是普通对象，也可能是响应式对象
     target,
+    // 是否是只读对象
     false,
+    // Object，Array普通类型数据proxy处理函数
     mutableHandlers,
+    // Set，Map，WeakSet，WeakMap集合类型数据proxy处理函数
     mutableCollectionHandlers,
+    // 响应式数据缓存map
     reactiveMap,
   )
 }
 
+// #endregion reactive
 export declare const ShallowReactiveMarker: unique symbol
 
 export type ShallowReactive<T> = T & { [ShallowReactiveMarker]?: true }
@@ -253,7 +259,7 @@ export function shallowReadonly<T extends object>(target: T): Readonly<T> {
     shallowReadonlyMap,
   )
 }
-
+// region createReactiveObject
 function createReactiveObject(
   target: Target,
   isReadonly: boolean,
@@ -291,12 +297,13 @@ function createReactiveObject(
   }
   const proxy = new Proxy(
     target,
+    // 类型是集合类型，则使用collectionHandlers; 否则使用baseHandlers。
     targetType === TargetType.COLLECTION ? collectionHandlers : baseHandlers,
   )
   proxyMap.set(target, proxy)
   return proxy
 }
-
+// #endregion createReactiveObject
 /**
  * Checks if an object is a proxy created by {@link reactive} or
  * {@link shallowReactive} (or {@link ref} in some cases).

@@ -248,7 +248,7 @@ export const MAP_KEY_ITERATE_KEY: unique symbol = Symbol(
 export const ARRAY_ITERATE_KEY: unique symbol = Symbol(
   __DEV__ ? 'Array iterate' : '',
 )
-
+// #region track
 /**
  * Tracks access to a reactive property.
  *
@@ -261,13 +261,17 @@ export const ARRAY_ITERATE_KEY: unique symbol = Symbol(
  */
 export function track(target: object, type: TrackOpTypes, key: unknown): void {
   if (shouldTrack && activeSub) {
+    // 取出响应式对象的依赖关系Map，如果没有则创建一个新的Map对象。
     let depsMap = targetMap.get(target)
     if (!depsMap) {
       targetMap.set(target, (depsMap = new Map()))
     }
+    // 从对象依赖关系表中取出对应key的依赖关系Map, 如果没有则创建一个新的Dep对象。
     let dep = depsMap.get(key)
     if (!dep) {
+      // 创建一个新的Dep对象，并将其添加到依赖关系表中。
       depsMap.set(key, (dep = new Dep()))
+      // 添加依赖关系
       dep.map = depsMap
       dep.key = key
     }
@@ -278,11 +282,14 @@ export function track(target: object, type: TrackOpTypes, key: unknown): void {
         key,
       })
     } else {
+      // 跟踪该依赖本身
       dep.track()
     }
   }
 }
+// #endregion track
 
+// #region trigger
 /**
  * Finds all deps associated with the target (or a specific property) and
  * triggers the effects stored within.
@@ -299,6 +306,7 @@ export function trigger(
   oldValue?: unknown,
   oldTarget?: Map<unknown, unknown> | Set<unknown>,
 ): void {
+  // 取出响应式对象的依赖关系Map
   const depsMap = targetMap.get(target)
   if (!depsMap) {
     // never been tracked
@@ -318,13 +326,14 @@ export function trigger(
           oldTarget,
         })
       } else {
+        // 触发依赖本身
         dep.trigger()
       }
     }
   }
 
   startBatch()
-
+  
   if (type === TriggerOpTypes.CLEAR) {
     // collection being cleared
     // trigger all effects for target
@@ -352,6 +361,7 @@ export function trigger(
 
       // schedule ARRAY_ITERATE for any numeric key change (length is handled above)
       if (isArrayIndex) {
+        // ARRAY_ITERATE_KEY: 在__DEV__为false时，为空字符串，这里得到的时是undefined。
         run(depsMap.get(ARRAY_ITERATE_KEY))
       }
 
@@ -387,6 +397,7 @@ export function trigger(
 
   endBatch()
 }
+// #endregion trigger
 
 export function getDepFromReactive(
   object: any,

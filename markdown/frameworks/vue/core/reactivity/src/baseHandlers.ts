@@ -46,9 +46,12 @@ function hasOwnProperty(this: object, key: unknown) {
   return obj.hasOwnProperty(key as string)
 }
 
+// #region BaseReactiveHandler
 class BaseReactiveHandler implements ProxyHandler<Target> {
   constructor(
+    // 对象是否只读
     protected readonly _isReadonly = false,
+    // 对象是否浅层响应式对象
     protected readonly _isShallow = false,
   ) {}
 
@@ -83,11 +86,12 @@ class BaseReactiveHandler implements ProxyHandler<Target> {
       // early return undefined
       return
     }
-
+    // 对象是数组
     const targetIsArray = isArray(target)
-
+    // 对象不是只读的
     if (!isReadonly) {
       let fn: Function | undefined
+      // key: splice, forEach 数组方法
       if (targetIsArray && (fn = arrayInstrumentations[key])) {
         return fn
       }
@@ -95,7 +99,7 @@ class BaseReactiveHandler implements ProxyHandler<Target> {
         return hasOwnProperty
       }
     }
-
+    // 使用Reflect反射来获取值
     const res = Reflect.get(
       target,
       key,
@@ -110,6 +114,8 @@ class BaseReactiveHandler implements ProxyHandler<Target> {
     }
 
     if (!isReadonly) {
+      // TrackOpTypes.GET：开发模式，追踪依赖。
+      // 将对象的key添加dep依赖中
       track(target, TrackOpTypes.GET, key)
     }
 
@@ -132,7 +138,9 @@ class BaseReactiveHandler implements ProxyHandler<Target> {
     return res
   }
 }
+// #endregion BaseReactiveHandler
 
+// #region MutableReactiveHandler
 class MutableReactiveHandler extends BaseReactiveHandler {
   constructor(isShallow = false) {
     super(false, isShallow)
@@ -144,7 +152,9 @@ class MutableReactiveHandler extends BaseReactiveHandler {
     value: unknown,
     receiver: object,
   ): boolean {
+    // 旧值
     let oldValue = target[key]
+    // 对象不是浅层响应式对象
     if (!this._isShallow) {
       const isOldValueReadonly = isReadonly(oldValue)
       if (!isShallow(value) && !isReadonly(value)) {
@@ -173,6 +183,7 @@ class MutableReactiveHandler extends BaseReactiveHandler {
       isArray(target) && isIntegerKey(key)
         ? Number(key) < target.length
         : hasOwn(target, key)
+    // 将新的值通过反射设置到对象中
     const result = Reflect.set(
       target,
       key,
@@ -182,8 +193,10 @@ class MutableReactiveHandler extends BaseReactiveHandler {
     // don't trigger if target is something up in the prototype chain of original
     if (target === toRaw(receiver)) {
       if (!hadKey) {
+        // 触发依赖更新
         trigger(target, TriggerOpTypes.ADD, key, value)
       } else if (hasChanged(value, oldValue)) {
+        // 触发依赖更新
         trigger(target, TriggerOpTypes.SET, key, value, oldValue)
       }
     }
@@ -198,6 +211,7 @@ class MutableReactiveHandler extends BaseReactiveHandler {
     const oldValue = target[key]
     const result = Reflect.deleteProperty(target, key)
     if (result && hadKey) {
+      // 触发依赖更新
       trigger(target, TriggerOpTypes.DELETE, key, undefined, oldValue)
     }
     return result
@@ -206,12 +220,14 @@ class MutableReactiveHandler extends BaseReactiveHandler {
   has(target: Record<string | symbol, unknown>, key: string | symbol): boolean {
     const result = Reflect.has(target, key)
     if (!isSymbol(key) || !builtInSymbols.has(key)) {
+      // 收集依赖
       track(target, TrackOpTypes.HAS, key)
     }
     return result
   }
 
   ownKeys(target: Record<string | symbol, unknown>): (string | symbol)[] {
+    // 收集依赖
     track(
       target,
       TrackOpTypes.ITERATE,
@@ -220,6 +236,7 @@ class MutableReactiveHandler extends BaseReactiveHandler {
     return Reflect.ownKeys(target)
   }
 }
+// #endregion MutableReactiveHandler
 
 class ReadonlyReactiveHandler extends BaseReactiveHandler {
   constructor(isShallow = false) {
@@ -246,9 +263,10 @@ class ReadonlyReactiveHandler extends BaseReactiveHandler {
     return true
   }
 }
-
+// #region mutableHandlers
 export const mutableHandlers: ProxyHandler<object> =
   /*@__PURE__*/ new MutableReactiveHandler()
+// #endregion mutableHandlers
 
 export const readonlyHandlers: ProxyHandler<object> =
   /*@__PURE__*/ new ReadonlyReactiveHandler()
