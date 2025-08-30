@@ -11,6 +11,9 @@ hero:
     #   text: 开发周报
     #   link: /years
     - theme: brand
+      text: 待办清单
+      link: /todo-list
+    - theme: brand
       text: 服务器
       link: /server/index.md
     - theme: alt
@@ -25,9 +28,6 @@ hero:
     - theme: alt
       text: 数据库
       link: /database
-    - theme: brand
-      text: 待办清单
-      link: /todo-list
     - theme: alt
       text: 移动端app
       link: /mobile-app
