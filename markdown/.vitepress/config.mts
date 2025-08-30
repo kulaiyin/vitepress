@@ -23,10 +23,12 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       {
-        text: "Home",
-        link: isDevMode
-          ? "http://localhost:5173/"
-          : "http://47.116.182.231:3061",
+        text: "首页",
+        link: "/",
+      },
+      {
+        text: "待办清单",
+        link: "/todo-list",
       },
     ],
     // [本地搜索](https://vitepress.dev/zh/reference/default-theme-search)
