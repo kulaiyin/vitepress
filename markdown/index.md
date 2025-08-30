@@ -7,9 +7,12 @@ hero:
   text: ""
   tagline: 记录开发过程中环境配置,遇到的问题和解决方案,TodoList,Week Record等.
   actions:
+    # - theme: brand
+    #   text: 开发周报
+    #   link: /years
     - theme: brand
-      text: 开发周报
-      link: /years
+      text: 服务器
+      link: /server/index.md
     - theme: alt
       text: 开发环境安装
       link: /env-install
