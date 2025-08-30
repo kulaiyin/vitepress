@@ -23,13 +23,14 @@
 ## 2025-08-31
 
 - [x] vitepress 添加本地搜索功能
+- [ ] [鸿蒙课堂学习](./mobile-app/harmonynext/courses/index.md)
+
 - [ ] kuikly 框架搭建
   - [ ] h5
   - [ ] 微信小程序
   - [ ] android app
   - [ ] ios app
   - [ ] harmony app
-- [ ] 鸿蒙课堂学习
 - [x] [反向代理服务器实现路径转发(nginx)](./server/nginx/nginx.md)
 ```txt
 同一个域名下存在多个服务，那么可以通过
@@ -40,3 +41,4 @@
   A服务接口: www.example.com/auth/api/v1/xx -> nginx分发 -> www.example.com:5050/api/v1/xx
   B服务接口: www.example.com/user/api/v1/xx -> nginx分发 -> www.example.com:5051/api/v1/xx
 ```
+- [ ] claude 安装和接入kimi K2模型

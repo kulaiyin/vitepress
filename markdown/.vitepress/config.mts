@@ -7,7 +7,7 @@ import { MermaidPlugin, MermaidMarkdown } from "vitepress-plugin-mermaid";
 export default defineConfig({
   title: "开发日记博客",
   lang: "zh-CN",
-  // 显示最后更新时间
+  // 显示最后更新时间，基于修改文件的git提交时间
   lastUpdated: true,
   // 忽略死链接检查，只在生产模式下开启
   // https://vitepress.dev/zh/reference/site-config#ignoredeadlinks
