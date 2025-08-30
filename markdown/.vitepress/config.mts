@@ -9,6 +9,10 @@ export default defineConfig({
   lang: "zh-CN",
   // 显示最后更新时间
   lastUpdated: true,
+  // 忽略死链接检查，只在生产模式下开启
+  // https://vitepress.dev/zh/reference/site-config#ignoredeadlinks
+  ignoreDeadLinks: isDevMode ? false : true,
+
   description:
     "记录开发过程中环境配置,遇到的问题和解决方案,TodoList,Week Record等.",
 
