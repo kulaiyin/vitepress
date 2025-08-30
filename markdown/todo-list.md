@@ -18,3 +18,14 @@
 
 - [x] 服务器继承sftp服务,服务器进行文件上传
   - [x] 客户端实现连接(nodejs实现)
+- [ ] 域名问题备案问题处理
+
+## 2025-08-31
+
+- [x] vitepress 添加本地搜索功能
+- [ ] kuikly 框架搭建
+  - [ ] h5
+  - [ ] 微信小程序
+  - [ ] android app
+  - [ ] ios app
+  - [ ] harmony app

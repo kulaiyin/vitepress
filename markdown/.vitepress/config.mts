@@ -15,7 +15,10 @@ export default defineConfig({
 
   description:
     "记录开发过程中环境配置,遇到的问题和解决方案,TodoList,Week Record等.",
-
+  locales: {
+    zh: { label: "简体中文", lang: "zh-CN", link: "/index" },
+    en: { label: "English", lang: "en-US", link: "/en/" },
+  },
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
@@ -26,6 +29,30 @@ export default defineConfig({
           : "http://47.116.182.231:3061",
       },
     ],
+    // [本地搜索](https://vitepress.dev/zh/reference/default-theme-search)
+    search: {
+      provider: "local",
+      options: {
+        locales: {
+          zh: {
+            translations: {
+              button: {
+                buttonText: "搜索文档",
+                buttonAriaLabel: "搜索文档",
+              },
+              modal: {
+                noResultsText: "无法找到相关结果",
+                resetButtonTitle: "清除查询条件",
+                footer: {
+                  selectText: "选择",
+                  navigateText: "切换",
+                },
+              },
+            },
+          },
+        },
+      },
+    },
 
     sidebar: {
       // 开发环境

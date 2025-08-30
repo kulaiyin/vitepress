@@ -37,7 +37,9 @@ hero:
     - theme: alt
       text: leetcode算法
       link: /leetcode/index.md
-
+    - theme: alt
+      text: 杂项
+      link: /others/others.md
 
 # features:
 #   - title: Feature A
